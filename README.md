@@ -1,3 +1,3 @@
 # LeeSeungHee-practice
-<img width="1564" height="280" alt="image" src="https://github.com/user-attachments/assets/6807062c-71b8-4bf0-84b2-b30123898a07" />
-<img width="1180" height="832" alt="image" src="https://github.com/user-attachments/assets/1be0ddde-85b0-4d97-9129-4e07a4be2773" />
+<img width="1564" height="280" alt="image" src="https://github.com/user-attachments/assets/21b5c93a-2c84-4312-bec6-2be3b86a83d2" />
+<img width="1170" height="792" alt="image" src="https://github.com/user-attachments/assets/a5796313-5dc2-4d16-ba0c-e3217c7d68e8" />
