@@ -1,0 +1,89 @@
+//
+//  WelcomeViewController.swift
+//  SOPT38-seminar
+//
+//  Created by 초긍정행운의포춘쿠키 on 4/4/26.
+//
+
+import Foundation
+// uikit에 파운데이션 포함이라 지워도댐
+import UIKit
+class WelcomeViewController: UIViewController {
+    
+    private var id : String? = ""
+    // ? 를 붙이면 옵셔널 됨 스페이스바하면안됨;;;그리고 =는 또 꼭 스페이스바 띄워줘야됨 양옆
+    //프라이빗은 밖에서 접근못하게한다는
+    //컨피규어함수도 그  음 웰컴뷰컨트롤러에 컨피규어함수가 잇는거임 그러면 아이디가 이미 드간상태ㅐ에서 뷰가 띄워지는거임
+    //웰컴뷰컨트롤러가 나오기전에 컨피규어 함수가 미리 아이디값을 정해주고 가는거임
+    
+    func configure(id: String?){
+        self.id = id
+        welcomeLabel.text = "\(id)님\n반가워요!"
+    }
+    
+    
+    //이미지
+    let imageView: UIImageView = {
+        let imageView = UIImageView(frame:CGRect(x:112,y:87,width:150,height:150))
+        imageView.image = .karrot
+        return imageView
+    }()
+    
+    //타이틀 라벨 (변하지 않는 텍스트)
+    let welcomeLabel: UILabel={
+        let label = UILabel(frame:CGRect(x:140,y:295,width:100,height: 60))
+        label.text = "???님 \n 반가워요!"
+        label.font = .boldSystemFont(ofSize: 24)
+        label.numberOfLines = 2
+        label.textAlignment = .center
+        return label
+    }()
+    
+    //메인으로 가는 버튼
+    let mainButton: UIButton = {
+        let mainButton = UIButton(frame:CGRect(x:20,y:426,width:335,height:52))
+        mainButton.backgroundColor = UIColor(red:255/255,green:111/255, blue:15/255, alpha:1)
+        mainButton.setTitle("메인으로", for: .normal)
+        mainButton.setTitleColor(.white,for: .normal)
+        return mainButton
+    }()
+    
+    //다시 로그인하는 버튼
+    let reloginButton: UIButton = {
+        let reloginButton = UIButton(frame:CGRect(x:20,y:498,width:335,height:52))
+        reloginButton.backgroundColor = .systemGray4
+        reloginButton.setTitle("다시로그인", for: .normal)
+        reloginButton.setTitleColor(.gray, for: .normal)
+        reloginButton.addTarget(self,action: #selector(backToLoginButtonDidTap), for: .touchUpInside)
+        return reloginButton
+    }()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = .white
+        setUI()
+//        bindID()
+    }
+    func setUI() {
+        view.addSubview(welcomeLabel)
+        view.addSubview(mainButton)
+        view.addSubview(imageView)
+        view.addSubview(reloginButton)
+        
+    }
+    
+    @objc
+    private func backToLoginButtonDidTap() {
+        if self.navigationController == nil {
+            self.dismiss(animated: true)
+        } else {
+            self.navigationController?.popViewController(animated: true)
+        }
+    }
+ 
+    func bindID() {
+        welcomeLabel.text = "\(id)님\n반가워요!"
+    }
+    
+    
+}
