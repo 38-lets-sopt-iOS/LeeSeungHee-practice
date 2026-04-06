@@ -6,18 +6,14 @@
 //
 
 import UIKit
-/* 프레임워크 라는 분은 자동차 같은것.. 나는 여기에 타서 운전을 ... 자신없지만 그래도 이분 덕분에 차를 만들진 않아도 됨
- 프레임워크를 이용하면 전체적인 코드의 흐름이 프레임워크에 달리게 됨 (제어의 역전)
- UIKit가 뼈대를 주고 내가 거기에 코드를 짜넣는 느낌인것같음 그래서 프레임워크가 개발자의 코드를 호출하는 셈
- Cocoa Touch Framework 라는 통합프레임워크 내에 >  UIKit, Foundation, ... 이 있다
-  코터프 님의 특징: Objective-c 런타임 시스템의 최상위 클래스인 NSObject를 상속한다
-  ㄴ 객체지향프로그래밍을 가능하게 만들어주는 핵심요소, 이를 상속받는 하위클래스들은 런타임시스템에 대한 기본인터페이스와 Object-c객체처럼 동작할 수 잇는 기능을 상속받는다..즉, 기본적인 객체 동작 제공, 런타임 기능 지원 ,자동 메모리 관리, 객체 생명주기 관리..
- 기본적으로 UIKit의 핵심 클래스들이 NSObject를 상속 : NSObject > UIResponder> UIView, UIVC, UIApplication
- 그래서 자연스럽게 이 컴포넌트들은 NSObject의 KVO,Runtime같은 기능들을 사용할수잇음 / SwiftUI는 View프로토콜이라 NSObject를 상속받지않음 ... 일단 정리는 햇는데 무슨말인지잘모르겟다*/
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+/* 앱델리게이트: 윈도우(시각적요소 x 배경막, 윈도우에 뷰가 올라가잇음)의 UI상태를 관리
+원래!  1앱 1윈도우 엿는데 iOS13부터 하나의 앱이 여러 윈도우를 갖기 시작하여,
+ 멀티 윈도우를 지원하기 위해 윈도우의 개념을 씬으로 대체하고, 씬델리게이트 등장
+ 앱델리게이트가 하던 UI Lifecycle관리를 담당하게됨*/
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         return true

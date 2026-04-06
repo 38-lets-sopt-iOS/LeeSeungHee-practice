@@ -8,11 +8,11 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+// UIKit> UIResponder> UIViewController
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        // Do any additional setup after loading the view.
+        // 색을 마음대로 바꿀 수 있음
     }
 
 

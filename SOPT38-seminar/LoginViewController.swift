@@ -8,14 +8,28 @@
 import Foundation
 // uikit에 파운데이션 포함이라 지워도댐
 import UIKit
+/*UIView: 여러 UI를 담는 바구니, 0개 이상의 Subview에 대한 레이아웃을 관리
+ 
+ NSObject > UIResponder > UIApplication/ViewController, UIView
+  ㄴ UIResponder의 subclass로서 touch등 여러event에 반응
+ 
+UIView> UIImageView,UILabel, UIScrollView, UIWindow, UIControll
+    UIControll > UIButton, UITextField, UISlider, UISwitch,..*/
+
 class LoginViewController: UIViewController {
-    
-    //타이틀 라벨 (변하지 않는 텍스트)
+/* UIViewController 내부에 var view : UIView 가 존재함
+ 뷰컨트롤러안에 유아이뷰 라는 타입의 view 변수가 있어서 내가 지금 view.를 찍음으로써
+ UIView 안의 메서드(라벨, 컨트롤>버튼, 이미지뷰 등)를 사용할 수 잇는거임
+ UIViewController가 UIView 기능을 가진게 아니고 UIView를 속성으로 갖고잇어서 사용하는것
+ */
+
     let titleLabel: UILabel={
+        // 라벨 (변하지 않는 텍스트)
         let label = UILabel(frame:CGRect(x:76,y:169,width:236,height: 44))
         label.text = "동네라서 가능한 모든 것\n당근에서 가까운 이웃과 함께해요."
-        label.font = .boldSystemFont(ofSize: 16)
         label.numberOfLines = 2
+        // 두줄로 띄우려면 엔터쳐주고, 몇줄짜리인지도 저렇게 해주야댐
+        label.font = .pretendard(size: 18, weight: .bold)
         label.textAlignment = .center
         return label
     }()
@@ -44,7 +58,7 @@ class LoginViewController: UIViewController {
     
     // 로그인버튼
     lazy var loginButton: UIButton = {
-        // let을 레이지 바 로 바꾸면 주황색이없어지므 왜지
+        // let을 레이지 바 로 바꾸면 오류가 없어지는데 왤까?
         let loginButton = UIButton(frame:CGRect(x:20,y:450,width:335,height:52))
         loginButton.backgroundColor = UIColor(red:255/255,green:111/255, blue:15/255, alpha:1)
         loginButton.setTitle("로그인하기", for: .normal)
