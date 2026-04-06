@@ -39,7 +39,7 @@ class LoginViewController: UIViewController {
         let textField = UITextField(frame:CGRect(x:20,y:276,width:335,height:52))
         textField.placeholder = "아이디"
         textField.backgroundColor = UIColor(red:221/255, green:222/255, blue:227/255, alpha:1)
-        textField.font = .systemFont(ofSize: 14)
+        textField.font = .pretendard(size: 14, weight: .semibold)
         textField.leftView = UIView( frame: CGRect(x:0,y:0,width:23,height:0))
         textField.leftViewMode = .always
         return textField
@@ -50,7 +50,7 @@ class LoginViewController: UIViewController {
         let textField = UITextField(frame:CGRect(x:20,y:335,width:335,height:52))
         textField.placeholder = "비밀번호"
         textField.backgroundColor = UIColor(red:221/255, green:222/255, blue:227/255, alpha:1)
-        textField.font = .systemFont(ofSize: 14)
+        textField.font = .pretendard(size: 14, weight: .semibold)
         textField.leftView = UIView( frame: CGRect(x:0,y:0,width:23,height:0))
         textField.leftViewMode = .always
         return textField
