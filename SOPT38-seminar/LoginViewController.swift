@@ -38,6 +38,7 @@ class LoginViewController: UIViewController {
     let loginTextField: UITextField = {
         let textField = UITextField(frame:CGRect(x:20,y:276,width:335,height:52))
         textField.placeholder = "아이디"
+        // label - text  / textfield - placeholder
         textField.backgroundColor = UIColor(red:221/255, green:222/255, blue:227/255, alpha:1)
         textField.font = .pretendard(size: 14, weight: .semibold)
         textField.leftView = UIView( frame: CGRect(x:0,y:0,width:23,height:0))
@@ -62,22 +63,21 @@ class LoginViewController: UIViewController {
         let loginButton = UIButton(frame:CGRect(x:20,y:450,width:335,height:52))
         loginButton.backgroundColor = UIColor(red:255/255,green:111/255, blue:15/255, alpha:1)
         loginButton.setTitle("로그인하기", for: .normal)
+        loginButton.titleLabel?.font = .pretendard(size: 18, weight: .bold)
+        //버튼은 titlelabel 로 변경..
         loginButton.setTitleColor(.white,for: .normal)
         loginButton.addTarget(self,action: #selector(loginButtonDidTap), for: .touchUpInside)
-        
         return loginButton
     }()
     
+    // 뷰디드로드 를 변경? 오버라이드는 수정이라고 햇는데
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         setUI()
     }
     func setUI() {
-        view.addSubview(titleLabel)
-        view.addSubview(loginTextField)
-        view.addSubview(pwTextField)
-        view.addSubview(loginButton)
+        view.addSubviews(titleLabel,loginTextField,pwTextField,loginButton)
     }
     
     @objc
