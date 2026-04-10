@@ -61,6 +61,7 @@ class WelcomeViewController: UIViewController {
         mainButton.backgroundColor = UIColor(red:255/255,green:111/255, blue:15/255, alpha:1)
         mainButton.setTitle("메인으로", for: .normal)
         mainButton.layer.cornerRadius = 10
+        mainButton.clipsToBounds = true
         mainButton.setTitleColor(.white,for: .normal)
         mainButton.titleLabel?.font = .pretendard(size: 18, weight:.bold)
         return mainButton
@@ -72,6 +73,7 @@ class WelcomeViewController: UIViewController {
         reloginButton.backgroundColor = .systemGray4
         reloginButton.setTitle("다시로그인", for: .normal)
         reloginButton.layer.cornerRadius = 10
+        reloginButton.clipsToBounds = true
         reloginButton.setTitleColor(.gray, for: .normal)
         reloginButton.titleLabel?.font = .pretendard(size: 18, weight:.bold)
         reloginButton.addTarget(self,action: #selector(backToLoginButtonDidTap), for: .touchUpInside)

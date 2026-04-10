@@ -88,6 +88,7 @@ class LoginViewController: UIViewController {
         loginButton.backgroundColor = UIColor(red:255/255,green:111/255, blue:15/255, alpha:1)
         //둥글게
         loginButton.layer.cornerRadius = 10
+        loginButton.clipsToBounds = true
         
         loginButton.setTitle("로그인하기", for: .normal)
         loginButton.titleLabel?.font = .pretendard(size: 18, weight: .bold)
