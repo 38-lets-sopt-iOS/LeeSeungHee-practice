@@ -18,7 +18,12 @@ class WelcomeViewController: UIViewController {
     
     func configure(id: String?){
         self.id = id
-        welcomeLabel.text = "\(id)님\n반가워요!"
+        if let id = id {
+               welcomeLabel.text = "\(id)님\n반가워요!"
+           } else {
+               welcomeLabel.text = "당근님\n반가워요!"
+           }
+        //welcomeLabel.text = "\(id)님\n반가워요!"
     }
     
     
@@ -33,7 +38,7 @@ class WelcomeViewController: UIViewController {
     let welcomeLabel: UILabel={
         let label = UILabel(frame:CGRect(x:140,y:295,width:100,height: 60))
         label.text = "???님 \n 반가워요!"
-        label.font = .boldSystemFont(ofSize: 24)
+        label.font = .pretendard(size: 25, weight:.bold)
         label.numberOfLines = 2
         label.textAlignment = .center
         return label
@@ -45,6 +50,7 @@ class WelcomeViewController: UIViewController {
         mainButton.backgroundColor = UIColor(red:255/255,green:111/255, blue:15/255, alpha:1)
         mainButton.setTitle("메인으로", for: .normal)
         mainButton.setTitleColor(.white,for: .normal)
+        mainButton.titleLabel?.font = .pretendard(size: 18, weight:.bold)
         return mainButton
     }()
     
@@ -54,6 +60,7 @@ class WelcomeViewController: UIViewController {
         reloginButton.backgroundColor = .systemGray4
         reloginButton.setTitle("다시로그인", for: .normal)
         reloginButton.setTitleColor(.gray, for: .normal)
+        reloginButton.titleLabel?.font = .pretendard(size: 18, weight:.bold)
         reloginButton.addTarget(self,action: #selector(backToLoginButtonDidTap), for: .touchUpInside)
         return reloginButton
     }()
@@ -82,7 +89,12 @@ class WelcomeViewController: UIViewController {
     }
  
     func bindID() {
-        welcomeLabel.text = "\(id)님\n반가워요!"
+        if let id = id {
+               welcomeLabel.text = "\(id)님\n반가워요!"
+           } else {
+               welcomeLabel.text = "당근님\n반가워요!"
+           }
+       // welcomeLabel.text = "\(id)님\n반가워요!"
     }
     
     
