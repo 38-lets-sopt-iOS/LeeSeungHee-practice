@@ -19,9 +19,9 @@ class WelcomeViewController: UIViewController {
     func configure(id: String?){
         self.id = id
         if let id = id {
-               welcomeLabel.text = "\(id)님\n반가워요!"
+               welcomeLabel1.text = "\(id)님"
            } else {
-               welcomeLabel.text = "당근님\n반가워요!"
+               welcomeLabel1.text = "당근님!"
            }
         //welcomeLabel.text = "\(id)님\n반가워요!"
     }
@@ -35,11 +35,22 @@ class WelcomeViewController: UIViewController {
     }()
     
     //타이틀 라벨 (변하지 않는 텍스트)
-    let welcomeLabel: UILabel={
+    let welcomeLabel1: UILabel={
         let label = UILabel(frame:CGRect(x:140,y:295,width:100,height: 60))
-        label.text = "???님 \n 반가워요!"
+        label.text = "???님"
         label.font = .pretendard(size: 25, weight:.bold)
-        label.numberOfLines = 2
+        
+        label.textAlignment = .center
+        return label
+    }()
+    let welcomeLabel2: UILabel={
+        let label = UILabel(frame:CGRect(x:140,y:335,width:100,height: 60))
+        label.text = "반가워요!"
+        label.textColor = UIColor(red:255/255,green:111/255, blue:15/255, alpha:1)
+        //그림자 추가
+        label.shadowColor = .black
+        label.shadowOffset = CGSize(width: 0.5, height: 0.5)
+        label.font = .pretendard(size: 25, weight:.bold)
         label.textAlignment = .center
         return label
     }()
@@ -71,13 +82,12 @@ class WelcomeViewController: UIViewController {
         setUI()
 //        bindID()
     }
+    
     func setUI() {
-        view.addSubview(welcomeLabel)
-        view.addSubview(mainButton)
-        view.addSubview(imageView)
-        view.addSubview(reloginButton)
-        
+        view.addSubviews(welcomeLabel1,welcomeLabel2,mainButton
+        ,imageView,reloginButton)
     }
+    
     
     @objc
     private func backToLoginButtonDidTap() {
@@ -90,9 +100,9 @@ class WelcomeViewController: UIViewController {
  
     func bindID() {
         if let id = id {
-               welcomeLabel.text = "\(id)님\n반가워요!"
+               welcomeLabel1.text = "\(id)님\n반가워요!"
            } else {
-               welcomeLabel.text = "당근님\n반가워요!"
+               welcomeLabel1.text = "당근님\n반가워요!"
            }
        // welcomeLabel.text = "\(id)님\n반가워요!"
     }
