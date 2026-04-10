@@ -51,7 +51,8 @@ class LoginViewController: UIViewController {
     private let idTextField: UITextField = {
         let textField = UITextField(frame:CGRect(x:20,y:316,width:335,height:52))
         textField.placeholder = "아이디"
-        // label - text  / textfield - placeholder
+        //둥글게
+        textField.layer.cornerRadius = 10
         textField.backgroundColor = UIColor(red:221/255, green:222/255, blue:227/255, alpha:1)
         textField.font = .pretendard(size: 14, weight: .semibold)
         textField.leftView = UIView( frame: CGRect(x:0,y:0,width:23,height:0))
@@ -63,6 +64,8 @@ class LoginViewController: UIViewController {
     private let pwTextField: UITextField = {
         let textField = UITextField(frame:CGRect(x:20,y:376,width:335,height:52))
         textField.placeholder = "비밀번호"
+        //둥글게
+        textField.layer.cornerRadius = 10
         textField.backgroundColor = UIColor(red:221/255, green:222/255, blue:227/255, alpha:1)
         textField.font = .pretendard(size: 14, weight: .semibold)
         textField.leftView = UIView( frame: CGRect(x:0,y:0,width:23,height:0))
@@ -83,11 +86,15 @@ class LoginViewController: UIViewController {
         */
         let loginButton = UIButton(frame:CGRect(x:20,y:480,width:335,height:52))
         loginButton.backgroundColor = UIColor(red:255/255,green:111/255, blue:15/255, alpha:1)
+        //둥글게
+        loginButton.layer.cornerRadius = 10
+        
         loginButton.setTitle("로그인하기", for: .normal)
         loginButton.titleLabel?.font = .pretendard(size: 18, weight: .bold)
         //버튼은 titlelabel 로 변경..
         loginButton.setTitleColor(.white,for: .normal)
         loginButton.addTarget(self,action: #selector(loginButtonDidTap), for: .touchUpInside)
+        
         return loginButton
     }()
     
