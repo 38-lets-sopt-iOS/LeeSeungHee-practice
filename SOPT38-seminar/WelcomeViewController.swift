@@ -78,6 +78,18 @@ class WelcomeViewController: UIViewController {
         return reloginButton
     }()
     
+    //스위치 추가
+    func setUISwitch(){
+        let switchOnOff = UISwitch()
+        switchOnOff.isOn = false
+        switchOnOff.onTintColor = UIColor(red:255/255,green:111/255, blue:15/255, alpha:1)
+        switchOnOff.thumbTintColor = .white
+        switchOnOff.frame = CGRect(x:160,y:257,width:50,height:50)
+        self.view.addSubview(switchOnOff)
+        switchOnOff.addTarget(self, action: #selector(switchValueChanged(_:)), for: .valueChanged)
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -88,6 +100,8 @@ class WelcomeViewController: UIViewController {
     func setUI() {
         view.addSubviews(welcomeLabel1,welcomeLabel2,mainButton
         ,imageView,reloginButton)
+        
+        setUISwitch()
     }
     
     
@@ -99,7 +113,16 @@ class WelcomeViewController: UIViewController {
             self.navigationController?.popViewController(animated: true)
         }
     }
- 
+ //스위치
+    @objc
+    private func switchValueChanged(_ sender: UISwitch) {
+        if sender.isOn {
+            view.backgroundColor = .yellow
+        } else {
+            view.backgroundColor = .white
+        }
+    }
+    
     func bindID() {
         if let id = id {
                welcomeLabel1.text = "\(id)님\n반가워요!"
