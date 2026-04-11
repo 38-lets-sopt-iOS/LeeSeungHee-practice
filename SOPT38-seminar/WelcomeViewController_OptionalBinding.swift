@@ -1,3 +1,4 @@
+
 //
 //  WelcomeViewController.swift
 //  SOPT38-seminar
@@ -8,7 +9,7 @@
 import Foundation
 // uikit에 파운데이션 포함이라 지워도댐
 import UIKit
-class WelcomeViewController: UIViewController {
+class WelcomeViewController_OptionalBinding: UIViewController {
     
     private var id : String? = ""
     // ? 를 붙이면 옵셔널 됨 스페이스바하면안됨;;;그리고 =는 또 꼭 스페이스바 띄워줘야됨 양옆
@@ -109,7 +110,6 @@ class WelcomeViewController: UIViewController {
     
     @objc
     private func backToLoginButtonDidTap() {
-        
         if self.navigationController == nil {
             self.dismiss(animated: true)
         } else {
