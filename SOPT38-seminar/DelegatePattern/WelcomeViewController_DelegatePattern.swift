@@ -5,8 +5,6 @@
 //  Created by 초긍정행운의포춘쿠키 on 4/4/26.
 //
 
-import Foundation
-// uikit에 파운데이션 포함이라 지워도댐
 import UIKit
 
 protocol RetryLoginDelegateProtocol: AnyObject {
@@ -21,10 +19,7 @@ class WelcomeViewController_DelegatePattern : UIViewController {
 
     
     private var id : String? = ""
-    // ? 를 붙이면 옵셔널 됨 스페이스바하면안됨;;;그리고 =는 또 꼭 스페이스바 띄워줘야됨 양옆
-    //프라이빗은 밖에서 접근못하게한다는
-    //컨피규어함수도 그  음 웰컴뷰컨트롤러에 컨피규어함수가 잇는거임 그러면 아이디가 이미 드간상태ㅐ에서 뷰가 띄워지는거임
-    //웰컴뷰컨트롤러가 나오기전에 컨피규어 함수가 미리 아이디값을 정해주고 가는거임
+   
     
     func configure(id: String?){
         self.id = id
@@ -33,7 +28,6 @@ class WelcomeViewController_DelegatePattern : UIViewController {
            } else {
                welcomeLabel1.text = "당근님!"
            }
-        //welcomeLabel.text = "\(id)님\n반가워요!"
     }
     
     
@@ -44,7 +38,7 @@ class WelcomeViewController_DelegatePattern : UIViewController {
         return imageView
     }()
     
-    //타이틀 라벨 (변하지 않는 텍스트)
+    //타이틀 라벨
     let welcomeLabel1: UILabel={
         let label = UILabel(frame:CGRect(x:140,y:295,width:100,height: 60))
         label.text = "???님"
@@ -146,7 +140,6 @@ class WelcomeViewController_DelegatePattern : UIViewController {
            } else {
                welcomeLabel1.text = "당근님\n반가워요!"
            }
-       // welcomeLabel.text = "\(id)님\n반가워요!"
     }
     
     

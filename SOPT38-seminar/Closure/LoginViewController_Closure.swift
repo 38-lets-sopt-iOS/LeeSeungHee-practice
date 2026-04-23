@@ -5,13 +5,15 @@
 //  Created by 초긍정행운의포춘쿠키 on 4/4/26.
 //
 
+import Foundation
+
 import UIKit
 
-class LoginViewController_DelegatePattern: UIViewController{
+class LoginViewController_Closure: UIViewController {
 
 
     private let titleLabel: UILabel={
-
+  
         let label = UILabel(frame:CGRect(x:76,y:245,width:236,height: 44))
         label.text = "동네라서 가능한 모든 것\n당근에서 가까운 이웃과 함께해요."
         label.numberOfLines = 2
@@ -29,7 +31,7 @@ class LoginViewController_DelegatePattern: UIViewController{
     }()
     
     // 로그인필드 아이디
-     let idTextField: UITextField = {
+    private let idTextField: UITextField = {
         let textField = UITextField(frame:CGRect(x:20,y:316,width:335,height:52))
         textField.placeholder = "아이디"
         //둥글게
@@ -70,7 +72,8 @@ class LoginViewController_DelegatePattern: UIViewController{
         
         return loginButton
     }()
-        override func viewDidLoad() {
+    
+    override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         setUI()
@@ -88,27 +91,28 @@ class LoginViewController_DelegatePattern: UIViewController{
     
     // 화면 전환 프레젠트 함수
     func presentToWelcomeVC() {
-        let welcomeViewController = WelcomeViewController_DelegatePattern()
+        let welcomeViewController = WelcomeViewController_Closure()
         welcomeViewController.modalPresentationStyle = .formSheet
         self.present(welcomeViewController, animated: true)
         
     }
     
     func navigateToWelcomeVC(){
-        let welcomeViewController = WelcomeViewController_DelegatePattern()
+        let welcomeViewController = WelcomeViewController_Closure()
+     
         welcomeViewController.configure(id: idTextField.text)
-        welcomeViewController.delegate = self
-        welcomeViewController.configure(id: idTextField.text)
+        welcomeViewController.backToLoginCompletion = { [weak self] data in
+            guard let self else { return }
+            print("클로저로 받아온 데이터는 바로 \(data) 입니다")
+            self.titleLabel.text = "\(data)님, 다시 로그인하세요"
+            self.idTextField.text = ""
+            self.pwTextField.text = ""
+        }
         self.navigationController?.pushViewController(welcomeViewController, animated: true)
     }
     
     
 }
 
-extension LoginViewController_DelegatePattern: RetryLoginDelegateProtocol{
-    func retryLogin(id: String) {
-        idTextField.text = ""
-        pwTextField.text = ""
-        titleLabel.text = "\(id)님, 다시 로그인해주세요"
-    }
-}
+// 커맨드슬래시 주석 단축키 컨트롤아이 정렬 단축키
+
