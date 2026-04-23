@@ -1,4 +1,3 @@
-
 //
 //  WelcomeViewController.swift
 //  SOPT38-seminar
@@ -9,7 +8,17 @@
 import Foundation
 // uikit에 파운데이션 포함이라 지워도댐
 import UIKit
-class WelcomeViewController_OptionalBinding: UIViewController {
+
+protocol RetryLoginDelegateProtocol: AnyObject {
+    // 애니오브젝트를 해주면 클래스 인스턴스들만 이 프로토콜을 채택할수잇음, 구조체나 열거형에서 사용 못함
+    func retryLogin(id: String)
+}
+
+
+class WelcomeViewController_DelegatePattern : UIViewController {
+    
+    weak var delegate: RetryLoginDelegateProtocol?
+
     
     private var id : String? = ""
     // ? 를 붙이면 옵셔널 됨 스페이스바하면안됨;;;그리고 =는 또 꼭 스페이스바 띄워줘야됨 양옆
@@ -110,6 +119,11 @@ class WelcomeViewController_OptionalBinding: UIViewController {
     
     @objc
     private func backToLoginButtonDidTap() {
+        
+        if let id = id {
+            delegate?.retryLogin(id: id)
+        }
+        
         if self.navigationController == nil {
             self.dismiss(animated: true)
         } else {
@@ -137,3 +151,5 @@ class WelcomeViewController_OptionalBinding: UIViewController {
     
     
 }
+
+
