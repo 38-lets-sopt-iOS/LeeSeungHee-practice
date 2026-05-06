@@ -28,7 +28,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
          //Scene이 UIWindowScene이 아니면 실행 중단
         
-        let loginViewController = ScrollViewPractice2()
+        let loginViewController = ItemViewController()
         let navigationController = UINavigationController(rootViewController: loginViewController)
         // 네비게이션 컨트롤러 추가
         
