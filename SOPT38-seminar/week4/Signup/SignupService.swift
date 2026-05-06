@@ -67,7 +67,7 @@ final class SignupService {
         //이렇게 request에 encoded url, httpmethod, header, body 다 드간상태로 반환됏다   (makeRequest햇네 진짜..)
     }
     
-//  !!!! 최종적으로 쓸 함수가 이 postSignup()임!!
+//MARK: -   postSignup!!!! 최종적으로 호출할 함수
     // 위에서 만든거 다 때려넣음
     func postSignup(loginId: String,
                         password: String,
@@ -107,7 +107,7 @@ final class SignupService {
                 return decoded
             } catch {
                 throw error}
-            //try 때문에 또 do - catch 문 썻고, 이 안에서 SignupResponseDTO를 디코드헤서 결국 >>decoded<< 를 반환!!!!
+            //try 때문에 또 do - catch 문 썻고, 이 안에서 SignupResponseDTO를 디코드헤서 결국 decoded 반환
         }
         
         
