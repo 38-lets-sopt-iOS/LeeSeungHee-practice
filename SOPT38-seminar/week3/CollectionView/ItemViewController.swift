@@ -32,7 +32,7 @@ class ItemViewController: UIViewController, UICollectionViewDelegate {
     }
     
     private func setUI() {
-        self.view.addSubview(collectionView)
+        view.addSubview(collectionView)
     }
     
     private func setLayout(){
