@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct SigninResponseDTO: Decodable {
+struct LoginResponseDTO: Decodable {
     let success: Bool
     let status: String
     let message: String

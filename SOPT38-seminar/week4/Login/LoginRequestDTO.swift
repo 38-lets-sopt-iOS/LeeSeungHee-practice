@@ -8,7 +8,7 @@
 import Foundation
 
 
-struct SigninRequestDTO : Encodable {
+struct LoginRequestDTO : Encodable {
     let loginId: String
     let password: String
 }

@@ -77,7 +77,7 @@ class LoginAPIViewController: UIViewController {
     
     @objc
     private func loginButtonDidTap() {
-        navigationController?.pushViewController(SignupViewController(), animated: true)
+        navigationController?.pushViewController(MyInfoViewController(), animated: true)
     }
 
     
