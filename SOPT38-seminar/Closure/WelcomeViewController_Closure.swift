@@ -6,15 +6,14 @@
 //
 
 import Foundation
-// uikit에 파운데이션 포함이라 지워도댐
 import UIKit
-class WelcomeViewController: UIViewController {
+class WelcomeViewController_Closure: UIViewController {
     
-    private var id : String? = ""
-    // ? 를 붙이면 옵셔널 됨 스페이스바하면안됨;;;그리고 =는 또 꼭 스페이스바 띄워줘야됨 양옆
-    //프라이빗은 밖에서 접근못하게한다는
-    //컨피규어함수도 그  음 웰컴뷰컨트롤러에 컨피규어함수가 잇는거임 그러면 아이디가 이미 드간상태ㅐ에서 뷰가 띄워지는거임
-    //웰컴뷰컨트롤러가 나오기전에 컨피규어 함수가 미리 아이디값을 정해주고 가는거임
+   
+    private var id : String? = nil
+    
+    var backToLoginCompletion: ((String) -> Void)?
+    //클로저(함수) 타입의 프로퍼티 선언 .  스트링을 받아서 아무것도 반환하지 않는 함수는 다 여기 담길 수 있다 .
     
     func configure(id: String?){
         self.id = id
@@ -23,7 +22,6 @@ class WelcomeViewController: UIViewController {
            } else {
                welcomeLabel1.text = "당근님!"
            }
-        //welcomeLabel.text = "\(id)님\n반가워요!"
     }
     
     
@@ -34,7 +32,7 @@ class WelcomeViewController: UIViewController {
         return imageView
     }()
     
-    //타이틀 라벨 (변하지 않는 텍스트)
+    //타이틀 라벨
     let welcomeLabel1: UILabel={
         let label = UILabel(frame:CGRect(x:140,y:295,width:100,height: 60))
         label.text = "???님"
@@ -110,6 +108,12 @@ class WelcomeViewController: UIViewController {
     @objc
     private func backToLoginButtonDidTap() {
         
+        guard let backToLoginCompletion = backToLoginCompletion else { return }
+
+        if let id = id {
+            backToLoginCompletion(id)
+        }
+        
         if self.navigationController == nil {
             self.dismiss(animated: true)
         } else {
@@ -132,7 +136,6 @@ class WelcomeViewController: UIViewController {
            } else {
                welcomeLabel1.text = "당근님\n반가워요!"
            }
-       // welcomeLabel.text = "\(id)님\n반가워요!"
     }
     
     
