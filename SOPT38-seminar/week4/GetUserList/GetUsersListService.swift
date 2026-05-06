@@ -12,6 +12,8 @@ final class GetUsersListService {
     static var shared = GetUsersListService()
     private init() {}
     
+    //얘는 body가 필요없어서 안 만든다
+    
     private func makeRequest(body: Data?) throws -> URLRequest {
         guard let baseURL = Bundle.main.infoDictionary?["BASE_URL"] as? String else { throw NetworkError.urlError}
         
@@ -43,6 +45,7 @@ final class GetUsersListService {
         return request
     }
     
+    //최종 부를 함수 
     func getUserList() async throws -> [UserData] {
             
         let request = try makeRequest(body: nil)

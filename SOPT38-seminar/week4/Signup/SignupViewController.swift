@@ -18,6 +18,7 @@ final class SignupViewController: UIViewController {
     private let ageTextField = UITextField()
     private let partTextField = UITextField()
     private lazy var signupButton = UIButton()
+    // SignupService 호출할 버튼
     private lazy var loginButton = UIButton()
     private lazy var getUsersButton = UIButton()
     
@@ -167,6 +168,7 @@ extension SignupViewController {
         }
     }
     
+    // 아래의 함수가 SignupService 를 호출
     @objc
     private func signupButtonDidTap() {
         Task{
