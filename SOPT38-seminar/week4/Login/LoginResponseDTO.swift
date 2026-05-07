@@ -9,14 +9,19 @@ import Foundation
 
 struct LoginResponseDTO: Decodable {
     let success: Bool
-    let status: String
+    let status: Int
     let message: String
     let code: String
-    let data: userId
+    let data: LoginData
     let meta: ErrorResponseDTO?
-    // SignupResponseDTO 에 선언된 구조체와 같음
 }
 
-struct userId: Decodable {
+struct LoginData: Decodable {
     let userId: Int
 }
+
+/* struct ErrorResponseDTO : Decodable {
+ let path: String
+ let timestamp: String
+}
+*/

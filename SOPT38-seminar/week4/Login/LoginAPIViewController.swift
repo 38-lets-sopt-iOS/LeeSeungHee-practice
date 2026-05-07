@@ -17,7 +17,7 @@ class LoginAPIViewController: UIViewController {
     private lazy var loginButton = UIButton()
     
     override func viewDidLoad() {
-    
+        
         super.viewDidLoad()
         setUI()
         setStyle()
@@ -25,8 +25,8 @@ class LoginAPIViewController: UIViewController {
     }
     
     private func setUI() {
-          view.addSubviews(idTextField, passwordTextField, loginButton)
-      }
+        view.addSubviews(idTextField, passwordTextField, loginButton)
+    }
     
     private func setStyle() {
         view.backgroundColor = .white
@@ -77,8 +77,23 @@ class LoginAPIViewController: UIViewController {
     
     @objc
     private func loginButtonDidTap() {
-        navigationController?.pushViewController(MyInfoViewController(), animated: true)
+        guard let id = idTextField.text, !id.isEmpty,
+              let password = passwordTextField.text, !password.isEmpty
+        else { return }
+        
+        Task {
+            do {
+                let response = try await LoginService.shared.postLogin(loginId: id, password: password)
+                let userId = response.data.userId
+                
+                let userViewController = UserViewController(userId: userId)
+                navigationController?.pushViewController(userViewController, animated: true)
+            } catch {
+                print("로그인 실패", error)
+            }
+        }
+        
     }
-
+    
     
 } //end
