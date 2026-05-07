@@ -46,7 +46,7 @@ class GetUsersListViewController: UIViewController {
         Task{
             do{
                 let response = try await GetUsersListService.shared.getUserList()
-                userList = response
+                userList = response.data.users
                 print("유저리스트")
                 updateUI(usersList: userList)
             } catch {

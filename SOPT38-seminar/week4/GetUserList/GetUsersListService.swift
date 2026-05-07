@@ -8,15 +8,12 @@
 import Foundation
 
 final class GetUsersListService {
-    
+    //MARK: - 0) Singleton 객체 생성
     static var shared = GetUsersListService()
     private init() {}
-    
-    //얘는 body가 필요없어서 안 만든다
-    
+    //MARK: - 1)  makeRequest
     private func makeRequest(body: Data?) throws -> URLRequest {
         guard let baseURL = Bundle.main.infoDictionary?["BASE_URL"] as? String else { throw NetworkError.urlError}
-        
         
         let baseUrl = baseURL
         print (baseUrl)
@@ -26,7 +23,6 @@ final class GetUsersListService {
         guard let encodedurl = URL(string: url) else {
             throw NetworkError.urlError
         }
-        
         
         var request = URLRequest(url: encodedurl)
         
@@ -44,39 +40,37 @@ final class GetUsersListService {
         
         return request
     }
-    
-    //최종 부를 함수 
-    func getUserList() async throws -> [UserData] {
-            
+    //MARK: - 2) 외부 호출 함수
+    func getUserList() async throws -> GetUserListResponseDTO {
+        
         let request = try makeRequest(body: nil)
-            
-            let (data, response) = try await URLSession.shared.data(for: request)
-            
-            dump("Request \(request)")
-            
-            guard let httpRespones = response as? HTTPURLResponse else {
-                throw NetworkError.responseError
-            }
-            
-            dump("Response \(response)")
-            
-            guard(200...299).contains(httpRespones.statusCode) else {
-                throw configureHTTPError(errorCode: httpRespones.statusCode)
-            }
-            
-            do{
-                let decoded = try JSONDecoder().decode(GetUserListResponseDTO.self, from: data)
-                print(decoded)
-                return decoded.data.users
-            } catch {
-                throw error}
-            
+        
+        let (data, response) = try await URLSession.shared.data(for: request)
+        
+        dump("Request \(request)")
+        
+        guard let httpRespones = response as? HTTPURLResponse else {
+            throw NetworkError.responseError
         }
         
+        dump("Response \(response)")
         
-        private func configureHTTPError(errorCode: Int) -> Error{
-            return NetworkError(rawValue: errorCode) ?? NetworkError.unknownError
+        guard(200...299).contains(httpRespones.statusCode) else {
+            throw configureHTTPError(errorCode: httpRespones.statusCode)
         }
-
+        
+        do{
+            let decoded = try JSONDecoder().decode(GetUserListResponseDTO.self, from: data)
+            print(decoded)
+            return decoded
+        } catch {
+            throw error}
+        
+    }
+    
+    
+    private func configureHTTPError(errorCode: Int) -> Error{
+        return NetworkError(rawValue: errorCode) ?? NetworkError.unknownError
+    }    
     
 }//end
