@@ -8,10 +8,11 @@
 import Foundation
 
 final class SignupService {
+    //MARK: - 0) Singleton 객체 생성
     static var shared = SignupService()
     private init() {}
  
-    //MARK: - 리퀘 바디 만들기
+    //MARK: - 1) makeRequestBody
     private func makeRequestBody(loginId: String, password: String, name: String, email: String, age: Int, part: String) -> Data? {
         
         do{
@@ -22,14 +23,14 @@ final class SignupService {
             let requestBody = try jsonEncoder.encode(data)
             // try 가 에러를 던지는 분이라 do - catch 문 사용해서 encode
             return requestBody
-            // Data? 에 json 화 된 리퀘바디 반환
+            // Data 타입인 encode된 data, JSON 반환
         } catch {
             print(error)
             return nil
-            // Data? 에 nil 반환
+            //  nil 반환
         }
     }
-    //MARK: - 리퀘 만들기
+    //MARK: - 2) makeRequest
     //위의 반환값인 Data? 가 body 로 들어감
     // throws 는 이 함수가 실패해서 에러를 던질수 잇다는 뜻...
     // 암튼 body에는 위에서 만든 Data? 가 들어감 .. nil일수도 requestBody 일수도
@@ -67,7 +68,7 @@ final class SignupService {
         //이렇게 request에 encoded url, httpmethod, header, body 다 드간상태로 반환됏다   (makeRequest햇네 진짜..)
     }
     
-//MARK: -   postSignup!!!! 최종적으로 호출할 함수
+//MARK: -  3) 외부 호출 함수
     // 위에서 만든거 다 때려넣음
     func postSignup(loginId: String,
                         password: String,
