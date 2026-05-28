@@ -120,8 +120,7 @@ struct hScrollView: View {
                     .buttonStyle(.plain)
                 }
             }
-            .padding(.horizontal)
-            .padding(.vertical, 12)
+            .padding()
         }
     }
 }

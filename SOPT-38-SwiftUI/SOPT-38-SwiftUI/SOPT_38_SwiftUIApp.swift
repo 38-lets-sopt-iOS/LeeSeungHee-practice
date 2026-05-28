@@ -11,7 +11,7 @@ import SwiftUI
 struct SOPT_38_SwiftUIApp: App {
     var body: some Scene {
         WindowGroup {
-            GridView() //씬델리게이트 (앱의 시작점, 앱이 실행되면 가장 먼저 여기 실행)
+            StoryView(story: users) //씬델리게이트 (앱의 시작점, 앱이 실행되면 가장 먼저 여기 실행)
         }
     }
 }
